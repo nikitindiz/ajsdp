@@ -124,16 +124,174 @@ body {
         background-color: white;
         font-family: 'Open Sans'; }
 
-/* line 117, C:/work/www/booking-search/sass/property-search-style.sass */
-.range {
-  color: #5d5d5d; }
-
-/* line 120, C:/work/www/booking-search/sass/property-search-style.sass */
-.chosen-one {
-  color: red; }
-
-/* line 123, C:/work/www/booking-search/sass/property-search-style.sass */
-.simple-date {
-  color: black; }
+/* line 133, C:/work/www/booking-search/sass/property-search-style.sass */
+.checkout-calendar-picker {
+  display: block;
+  position: relative;
+  width: 519px;
+  box-sizing: border-box;
+  border: 1px solid #bababa;
+  height: 282px;
+  font-family: 'Open Sans'; }
+  /* line 141, C:/work/www/booking-search/sass/property-search-style.sass */
+  .checkout-calendar-picker .header-title h1 {
+    height: 45px;
+    font-size: 15px;
+    background-color: #f2f3f4;
+    text-align: center;
+    padding: 12px 14px;
+    margin: 0 0 7px 0;
+    box-sizing: border-box;
+    font-weight: bold; }
+  /* line 150, C:/work/www/booking-search/sass/property-search-style.sass */
+  .checkout-calendar-picker ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+  /* line 156, C:/work/www/booking-search/sass/property-search-style.sass */
+  .checkout-calendar-picker .picker-year ul li.month {
+    display: block;
+    background-color: white;
+    float: left;
+    width: 258.5px;
+    box-sizing: border-box;
+    padding: 0 5px 5px; }
+    /* line 163, C:/work/www/booking-search/sass/property-search-style.sass */
+    .checkout-calendar-picker .picker-year ul li.month .header {
+      margin: 0;
+      padding: 0;
+      text-align: center; }
+      /* line 167, C:/work/www/booking-search/sass/property-search-style.sass */
+      .checkout-calendar-picker .picker-year ul li.month .header h1 {
+        margin: 0;
+        font-size: 15px;
+        color: #737373;
+        padding: 6px 4px 12px; }
+    /* line 173, C:/work/www/booking-search/sass/property-search-style.sass */
+    .checkout-calendar-picker .picker-year ul li.month ul li.week-days {
+      display: block;
+      width: 100%; }
+      /* line 177, C:/work/www/booking-search/sass/property-search-style.sass */
+      .checkout-calendar-picker .picker-year ul li.month ul li.week-days ul li {
+        display: block;
+        width: 14.28571%;
+        float: left;
+        text-align: center;
+        font-size: 13px;
+        color: #aaa;
+        font-weight: 600;
+        height: 26px; }
+    /* line 187, C:/work/www/booking-search/sass/property-search-style.sass */
+    .checkout-calendar-picker .picker-year ul li.month ul li.days-shift-1 {
+      display: block;
+      width: 14.28571%;
+      text-align: center;
+      float: left;
+      font-size: 13px;
+      height: 26px;
+      padding-top: 2px;
+      box-sizing: border-box;
+      color: #4B96FD; }
+    /* line 189, C:/work/www/booking-search/sass/property-search-style.sass */
+    .checkout-calendar-picker .picker-year ul li.month ul li.days-shift-2 {
+      display: block;
+      width: 28.57143%;
+      text-align: center;
+      float: left;
+      font-size: 13px;
+      height: 26px;
+      padding-top: 2px;
+      box-sizing: border-box;
+      color: #4B96FD; }
+    /* line 191, C:/work/www/booking-search/sass/property-search-style.sass */
+    .checkout-calendar-picker .picker-year ul li.month ul li.days-shift-3 {
+      display: block;
+      width: 42.85714%;
+      text-align: center;
+      float: left;
+      font-size: 13px;
+      height: 26px;
+      padding-top: 2px;
+      box-sizing: border-box;
+      color: #4B96FD; }
+    /* line 193, C:/work/www/booking-search/sass/property-search-style.sass */
+    .checkout-calendar-picker .picker-year ul li.month ul li.days-shift-4 {
+      display: block;
+      width: 57.14286%;
+      text-align: center;
+      float: left;
+      font-size: 13px;
+      height: 26px;
+      padding-top: 2px;
+      box-sizing: border-box;
+      color: #4B96FD; }
+    /* line 195, C:/work/www/booking-search/sass/property-search-style.sass */
+    .checkout-calendar-picker .picker-year ul li.month ul li.days-shift-5 {
+      display: block;
+      width: 71.42857%;
+      text-align: center;
+      float: left;
+      font-size: 13px;
+      height: 26px;
+      padding-top: 2px;
+      box-sizing: border-box;
+      color: #4B96FD; }
+    /* line 197, C:/work/www/booking-search/sass/property-search-style.sass */
+    .checkout-calendar-picker .picker-year ul li.month ul li.days-shift-6 {
+      display: block;
+      width: 85.71429%;
+      text-align: center;
+      float: left;
+      font-size: 13px;
+      height: 26px;
+      padding-top: 2px;
+      box-sizing: border-box;
+      color: #4B96FD; }
+    /* line 199, C:/work/www/booking-search/sass/property-search-style.sass */
+    .checkout-calendar-picker .picker-year ul li.month ul li.days-shift-7 {
+      display: block;
+      width: 100%;
+      text-align: center;
+      float: left;
+      font-size: 13px;
+      height: 26px;
+      padding-top: 2px;
+      box-sizing: border-box;
+      color: #4B96FD; }
+    /* line 202, C:/work/www/booking-search/sass/property-search-style.sass */
+    .checkout-calendar-picker .picker-year ul li.month ul li.single-date {
+      display: block;
+      width: 14.28571%;
+      text-align: center;
+      float: left;
+      font-size: 13px;
+      height: 26px;
+      padding-top: 2px;
+      box-sizing: border-box;
+      color: #4B96FD; }
+      /* line 212, C:/work/www/booking-search/sass/property-search-style.sass */
+      .checkout-calendar-picker .picker-year ul li.month ul li.single-date input[type="checkbox"] {
+        display: none; }
+      /* line 214, C:/work/www/booking-search/sass/property-search-style.sass */
+      .checkout-calendar-picker .picker-year ul li.month ul li.single-date input[type="checkbox"]:hover + label {
+        color: white !important;
+        background-color: #1F3580 !important; }
+      /* line 217, C:/work/www/booking-search/sass/property-search-style.sass */
+      .checkout-calendar-picker .picker-year ul li.month ul li.single-date.range {
+        background-color: #EFEFEF; }
+      /* line 219, C:/work/www/booking-search/sass/property-search-style.sass */
+      .checkout-calendar-picker .picker-year ul li.month ul li.single-date.chosen-one {
+        color: white !important;
+        background-color: #1F3580; }
+      /* line 222, C:/work/www/booking-search/sass/property-search-style.sass */
+      .checkout-calendar-picker .picker-year ul li.month ul li.single-date.simple-date {
+        color: #4B96FD; }
+      /* line 224, C:/work/www/booking-search/sass/property-search-style.sass */
+      .checkout-calendar-picker .picker-year ul li.month ul li.single-date.disabled {
+        color: #aaa !important;
+        text-decoration: line-through; }
+      /* line 227, C:/work/www/booking-search/sass/property-search-style.sass */
+      .checkout-calendar-picker .picker-year ul li.month ul li.single-date.day-of-week-Su, .checkout-calendar-picker .picker-year ul li.month ul li.single-date.day-of-week-Sa {
+        color: #1F3580; }
 
 /*# sourceMappingURL=property-search-style.css.map */

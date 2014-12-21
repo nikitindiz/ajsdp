@@ -114,14 +114,120 @@ body
         font-size: $field-font-big-size
         +field-decoration
 
-.range
-  color: #5d5d5d
 
-.chosen-one
-  color: red
+=days-shift($shift-value)
+  display: block
+  width: percentage(1/7) * $shift-value
+  text-align: center
+  float: left
+  font-size: 13px
+  height: 26px
+  padding-top: 2px
+  box-sizing: border-box
+  color: #4B96FD
 
-.simple-date
-  color: black
+$calendar-width : 519px
+$calendar-border-size : 1px
+$col-size : $calendar-width / 2 - $calendar-border-size
+
+.checkout-calendar-picker
+  display: block
+  position: relative
+  width: $calendar-width
+  // background-color: red
+  box-sizing: border-box
+  border: $calendar-border-size solid #bababa
+  height: 282px
+  font-family: 'Open Sans'
+  .header-title h1
+    height: 45px
+    font-size: 15px
+    background-color: #f2f3f4
+    text-align: center
+    padding: 12px 14px
+    margin: 0 0 7px 0
+    box-sizing: border-box
+    font-weight: bold
+  ul
+    list-style: none
+    padding: 0
+    margin: 0
+  .picker-year
+    ul
+      li.month
+        display: block
+        background-color: white
+        float: left
+        width: $col-size
+        box-sizing: border-box
+        padding: 0 5px 5px
+        .header
+          margin: 0
+          padding: 0
+          text-align: center
+          h1
+            margin: 0
+            font-size: 15px
+            color: #737373
+            padding: 6px 4px 12px
+        ul
+          li.week-days
+            display: block
+            width: 100%
+            ul
+              li
+                display: block
+                width: percentage(1/7)
+                float: left
+                text-align: center
+                font-size: 13px
+                color: #aaa
+                font-weight: 600
+                height: 26px
+          li
+            &.days-shift-1
+              +days-shift(1)
+            &.days-shift-2
+              +days-shift(2)
+            &.days-shift-3
+              +days-shift(3)
+            &.days-shift-4
+              +days-shift(4)
+            &.days-shift-5
+              +days-shift(5)
+            &.days-shift-6
+              +days-shift(6)
+            &.days-shift-7
+              +days-shift(7)
+
+          li.single-date
+            display: block
+            width: percentage(1/7)
+            text-align: center
+            float: left
+            font-size: 13px
+            height: 26px
+            padding-top: 2px
+            box-sizing: border-box
+            color: #4B96FD
+            input[type="checkbox"]
+              display: none
+            input[type="checkbox"]:hover + label
+              color: white !important
+              background-color: #1F3580 !important
+            &.range
+              background-color: #EFEFEF
+            &.chosen-one
+              color: white !important
+              background-color: #1F3580
+            &.simple-date
+              color: #4B96FD
+            &.disabled
+              color: #aaa !important
+              text-decoration: line-through
+            &.day-of-week-Su, &.day-of-week-Sa
+              color: #1F3580
+
 
 
 

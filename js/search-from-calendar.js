@@ -10,15 +10,273 @@ var weekDayName = [
                 "Sa"
 ];
 
+var MonthName = [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec"
+];
+
+var dateTodayDay = new Date().getDate();
+var dateTodayMonth = new Date().getMonth();
+var dateTodayYear = new Date().getFullYear();
+
+// console.log(getCalendar(12,2014,2,2015));
+
 var dataRange = {};
 
 // Angular.js dirrectives
+
+
+function datePickerController($scope) {
+
+  // ToDo : Generate calendar range: start date - end date
+
+  var startYear   = 2014;
+  var startMonth  = 12;
+  var endYear     = 2015;
+  var endMonth    = 12;
+  var daysInMonth = 0;
+  var colWidth    = '519';
+
+  $scope.pickerDates = getCalendar(startMonth, startYear, endMonth, endYear);
+  $scope.weekDays = weekDayName;
+  $scope.calendarWrapperWidth = colWidth * getMonthsLength($scope.pickerDates);
+
+  $scope.keepOnlyTwoDates = function(date, whereChange) {
+
+    if (whereChange == undefined) {
+      whereChange = 'at-the-end';
+    }
+
+    if (countChosenDates($scope.pickerDates) == 2) {
+      if (whereChange == undefined) {
+        whereChange = 'after';
+      }
+
+      if (whereChange == 'before') {
+        setPropertyById($scope.pickerDates,
+                        getPrevMin($scope.pickerDates),
+                        'dateChosen',
+                        false);
+      } else {
+        setPropertyById($scope.pickerDates,
+                        getPrevMax($scope.pickerDates),
+                        'dateChosen',
+                        false);
+      }
+    }
+
+  };
+
+  $scope.updateDatesDecoration = function(date) {
+
+    //if (countChosenDates($scope.pickerDates) == 2) {
+
+      for (var y = 0; y < $scope.pickerDates.length; y++) {
+        for (var m = 0; m < $scope.pickerDates[y].months.length; m++) {
+          for (var d = 0; d < $scope.pickerDates[y].months[m].dates.length; d++) {
+            if ($scope.pickerDates[y].months[m].dates[d].dateChosen) {
+              $scope.pickerDates[y].months[m].dates[d].dateType = 'chosen-one';
+            } else if ( ($scope.pickerDates[y].months[m].dates[d].dateId < getPrevMax($scope.pickerDates)) &&
+                        ($scope.pickerDates[y].months[m].dates[d].dateId > getPrevMin($scope.pickerDates))
+                      ) {
+              $scope.pickerDates[y].months[m].dates[d].dateType = 'range';
+            } else if ($scope.pickerDates[y].months[m].dates[d].dateType != 'disabled') {
+              $scope.pickerDates[y].months[m].dates[d].dateType = 'simple-date';
+            }
+          }
+        }
+      }
+    //}
+
+
+  };
+
+}
+
+// Count chosen dates
+function countChosenDates(date) {
+
+  var counter = 0;
+
+  for (var y = 0; y < date.length; y++) {
+    for (var m = 0; m < date[y].months.length; m++) {
+      for (var d = 0; d < date[y].months[m].dates.length; d++) {
+        if (date[y].months[m].dates[d].dateChosen) {
+          counter++;
+        }
+      }
+    }
+  }
+
+  return counter;
+
+}
+
+// Get months length
+
+function getMonthsLength(date) {
+  var length = 0;
+  for (var y = 0; y < date.length; y++) {
+    length += date[y].months.length;
+  }
+  return length;
+}
+
+
+// Set property by Id
+function setPropertyById(date, id, provertyName, propertyValue) {
+  if (id == -1) {
+    return false;
+  }
+  status = false;
+  for (var y = 0; y < date.length; y++) {
+    for (var m = 0; m < date[y].months.length; m++) {
+      for (var d = 0; d < date[y].months[m].dates.length; d++) {
+        if (date[y].months[m].dates[d].dateId == id) {
+          date[y].months[m].dates[d][provertyName] = propertyValue;
+          status = true;
+        }
+      }
+    }
+  }
+  return status;
+}
+
+
+// Previous Max and Min
+function getPrevMax(date) {
+  var prevMaxId = -1;
+  for (var y = 0; y < date.length; y++) {
+    for (var m = 0; m < date[y].months.length; m++) {
+      for (var d = 0; d < date[y].months[m].dates.length; d++) {
+        if (date[y].months[m].dates[d].dateChosen) {
+          prevMaxId = date[y].months[m].dates[d].dateId;
+        }
+      }
+    }
+  }
+  return prevMaxId;
+}
+
+function getPrevMin(date) {
+  var prevMinId = -1;
+  for (var y = date.length-1; y >= 0; y--) {
+    for (var m = date[y].months.length-1; m >= 0 ; m--) {
+      for (var d = date[y].months[m].dates.length-1; d >= 0 ; d--) {
+        if (date[y].months[m].dates[d].dateChosen) {
+          prevMinId = date[y].months[m].dates[d].dateId;
+        }
+      }
+    }
+  }
+  return prevMinId;
+}
+
+
+
+
+// Generate calendar
+
+function getCalendar(startMonth, startYear, endMonth, endYear) {
+
+  var dateId = 1;
+  var calendar = [];
+  var calendarMonths = [];
+  var calendarDates = [];
+  var monthsStart = startMonth;
+  var monthsEnd = (startYear == endYear) ? endMonth : 12;
+  var daysInMonth = 0;
+  var today = new Date();
+  var currentDate;
+  var dateType;
+  var inputAdditions = '';
+
+  for (var year = startYear; year <= endYear; year++) {
+
+    monthsStart = (year > startYear) ? 1 : monthsStart;
+    monthsEnd = (year == endYear) ? endMonth : monthsEnd;
+
+    for (var month = monthsStart; month <= monthsEnd; month++) {
+      daysInMonth = new Date(year, month, 0).getDate();
+      for (var day = 1; day <= daysInMonth; day++) {
+        dateId++;
+
+        currentDate = new Date(year, month-1, day);
+
+        if (today >= currentDate) {
+          dateType = 'disabled';
+          inputAdditions = 'disabled';
+        } else {
+          dateType = 'simple-date';
+          inputAdditions = '';
+        }
+
+
+        calendarDates.push({
+                            dateDay: day,
+                            dateMonth: month,
+                            dateYear: year,
+                            dateDayOfWeek:  weekDayName[
+                                            new Date(year, month-1, day).getDay()],
+                            dateChosen: false,
+                            'dateType': dateType, // simple-date, chosen-one, range,
+                                                  // disabled
+                            dateId: dateId,
+                            inputAdditions: inputAdditions
+                            });
+      }
+      calendarMonths.push({
+                            name: MonthName[month-1],
+                            dates: calendarDates,
+                            daysShift: new Date(year, month-1, 1).getDay()
+                            });
+      calendarDates = [];
+    }
+    calendar.push({
+                  'year': year,
+                  'months': calendarMonths
+                  });
+    calendarMonths = [];
+  }
+
+  return calendar;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 function datesController($scope) {
   $scope.currentDate = "dec";
 
   $scope.dates = getDatesInRange(11, 2014, 1, 2015);
 
+  $scope.years = [2014,2015];
+
+  $scope.checkYear = function(currentDate) {
+    console.log(currentDate);
+    //console.log($scope.year);
+    return true;
+    /* true if you want item, false if not */
+  }
 
   $scope.updateDecoration = function(date) {
 
