@@ -1,0 +1,139 @@
+/* line 28, C:/work/www/booking-search/sass/property-search-style.sass */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 1000px; }
+
+/* line 33, C:/work/www/booking-search/sass/property-search-style.sass */
+.banner-simulator {
+  width: 100%;
+  height: 560px;
+  background-color: #acc949;
+  margin-bottom: -65px; }
+
+/* line 40, C:/work/www/booking-search/sass/property-search-style.sass */
+.search-wrapper {
+  font-family: 'Open Sans';
+  width: 749px;
+  margin: 0 auto; }
+  /* line 44, C:/work/www/booking-search/sass/property-search-style.sass */
+  .search-wrapper .form-background {
+    background-color: rgba(59, 61, 63, 0.95);
+    border: 1px solid black;
+    padding: 10px; }
+    /* line 48, C:/work/www/booking-search/sass/property-search-style.sass */
+    .search-wrapper .form-background .i-dont-know-chekbox {
+      width: 100%;
+      display: inline-block;
+      color: white;
+      margin-top: 10px;
+      font-size: 12px; }
+      /* line 54, C:/work/www/booking-search/sass/property-search-style.sass */
+      .search-wrapper .form-background .i-dont-know-chekbox input[type="checkbox"] {
+        float: left;
+        margin-right: 5px; }
+    /* line 57, C:/work/www/booking-search/sass/property-search-style.sass */
+    .search-wrapper .form-background .options-wrapper {
+      width: 100%; }
+      /* line 59, C:/work/www/booking-search/sass/property-search-style.sass */
+      .search-wrapper .form-background .options-wrapper .inline-field {
+        cursor: pointer;
+        font-size: 14px; }
+      /* line 63, C:/work/www/booking-search/sass/property-search-style.sass */
+      .search-wrapper .form-background .options-wrapper .search-button button {
+        background-color: #E05E00;
+        border: 1px solid black;
+        width: 82px;
+        box-sizing: border-box;
+        height: 51px;
+        font-weight: 600;
+        color: white;
+        font-family: 'Open Sans';
+        font-size: 14px; }
+    /* line 73, C:/work/www/booking-search/sass/property-search-style.sass */
+    .search-wrapper .form-background .inline-field {
+      width: 205px;
+      display: table-cell;
+      vertical-align: middle;
+      float: left;
+      margin-right: 10px;
+      box-shadow: inset 1px 2px 6.5px rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: inset 1px 2px 6.5px rgba(0, 0, 0, 0.2);
+      -o-box-shadow: inset 1px 2px 6.5px rgba(0, 0, 0, 0.2);
+      -ms-box-shadow: inset 1px 2px 6.5px rgba(0, 0, 0, 0.2);
+      -webkit-box-shadow: inset 1px 2px 6.5px rgba(0, 0, 0, 0.2);
+      border: 1px solid black;
+      height: 51px;
+      padding: 10px;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      background-color: white;
+      font-family: 'Open Sans'; }
+      /* line 80, C:/work/www/booking-search/sass/property-search-style.sass */
+      .search-wrapper .form-background .inline-field.date-picker {
+        position: relative; }
+        /* line 82, C:/work/www/booking-search/sass/property-search-style.sass */
+        .search-wrapper .form-background .inline-field.date-picker:after {
+          content: "\f073";
+          font-family: FontAwesome;
+          font-weight: normal;
+          font-style: normal;
+          display: inline-block;
+          position: absolute;
+          right: 14px;
+          top: 17px;
+          opacity: 1;
+          font-size: 16px; }
+        /* line 93, C:/work/www/booking-search/sass/property-search-style.sass */
+        .search-wrapper .form-background .inline-field.date-picker .chosen-date {
+          display: none; }
+        /* line 95, C:/work/www/booking-search/sass/property-search-style.sass */
+        .search-wrapper .form-background .inline-field.date-picker .title {
+          margin-top: 5px;
+          display: block; }
+        /* line 99, C:/work/www/booking-search/sass/property-search-style.sass */
+        .search-wrapper .form-background .inline-field.date-picker.chosen .chosen-date, .search-wrapper .form-background .inline-field.date-picker.chosen .title {
+          display: block;
+          width: 100%;
+          margin: 0;
+          font-size: 12px; }
+        /* line 104, C:/work/www/booking-search/sass/property-search-style.sass */
+        .search-wrapper .form-background .inline-field.date-picker.chosen .title {
+          margin: -2px 0;
+          opacity: 0.5; }
+        /* line 107, C:/work/www/booking-search/sass/property-search-style.sass */
+        .search-wrapper .form-background .inline-field.date-picker.chosen .chosen-date {
+          font-weight: 600; }
+    /* line 110, C:/work/www/booking-search/sass/property-search-style.sass */
+    .search-wrapper .form-background .location-wrapper {
+      margin-bottom: 10px; }
+      /* line 112, C:/work/www/booking-search/sass/property-search-style.sass */
+      .search-wrapper .form-background .location-wrapper input.location-field {
+        width: 100%;
+        font-size: 16px;
+        box-shadow: inset 1px 2px 6.5px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: inset 1px 2px 6.5px rgba(0, 0, 0, 0.2);
+        -o-box-shadow: inset 1px 2px 6.5px rgba(0, 0, 0, 0.2);
+        -ms-box-shadow: inset 1px 2px 6.5px rgba(0, 0, 0, 0.2);
+        -webkit-box-shadow: inset 1px 2px 6.5px rgba(0, 0, 0, 0.2);
+        border: 1px solid black;
+        height: 51px;
+        padding: 10px;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        background-color: white;
+        font-family: 'Open Sans'; }
+
+/* line 117, C:/work/www/booking-search/sass/property-search-style.sass */
+.range {
+  color: #5d5d5d; }
+
+/* line 120, C:/work/www/booking-search/sass/property-search-style.sass */
+.chosen-one {
+  color: red; }
+
+/* line 123, C:/work/www/booking-search/sass/property-search-style.sass */
+.simple-date {
+  color: black; }
+
+/*# sourceMappingURL=property-search-style.css.map */
