@@ -56,6 +56,7 @@ body
         margin-right: $spacer / 2
     .options-wrapper
       width: 100%
+      position: relative
       .inline-field
         cursor: pointer
         font-size: $field-font-mid-size
@@ -130,15 +131,64 @@ $calendar-width : 519px
 $calendar-border-size : 1px
 $col-size : $calendar-width / 2 - $calendar-border-size
 
+=border-radius($radius)
+  -moz-border-radius: $radius
+  -ms-border-radius: $radius
+  -o-border-radius: $radius
+  -webkit-border-radius: $radius
+  border-radius: $radius
+
+=drop-shadow
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2)
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2)
+  -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2)
+  -ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2)
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2)
+
 .checkout-calendar-picker
+  &.hide
+    width: 0
+    height: 0
+    opacity: 0
   display: block
-  position: relative
+  position: absolute
+  &.check-in
+    left: 0
+  &.check-out
+    left: 216px
+  top: 51px
   width: $calendar-width
   // background-color: red
   box-sizing: border-box
-  border: $calendar-border-size solid #bababa
+  border: $calendar-border-size solid #d9d9d9
   height: 282px
   font-family: 'Open Sans'
+  overflow: hidden
+  +border-radius(4px)
+  +drop-shadow
+  z-index: 4
+  .calendar-control
+    position: absolute
+    z-index: 5
+    color: #0896FF
+    cursor: pointer
+    &.close
+      right: 20px
+      top: 12px
+      color: #D7D7D7
+    &.move-left
+      left: 10px
+      top: 56px
+    &.move-right
+      right: 10px
+      top: 56px
+    &.disabled
+      color: #D7D7D7
+  .picker-year
+    > ul
+      position: relative
+      .col-wrapper
+        left: 0
   .header-title h1
     height: 45px
     font-size: 15px
@@ -220,6 +270,7 @@ $col-size : $calendar-width / 2 - $calendar-border-size
             &.chosen-one
               color: white !important
               background-color: #1F3580
+              +border-radius(4px)
             &.simple-date
               color: #4B96FD
             &.disabled
@@ -227,6 +278,10 @@ $col-size : $calendar-width / 2 - $calendar-border-size
               text-decoration: line-through
             &.day-of-week-Su, &.day-of-week-Sa
               color: #1F3580
+            &:hover
+              background-color: #e09200
+              color: white !important
+              +border-radius(4px)
 
 
 
