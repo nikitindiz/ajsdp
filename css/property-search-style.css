@@ -349,10 +349,13 @@ body {
       .checkout-calendar-picker .picker-year ul li.month ul li.single-date.disabled {
         color: #aaa !important;
         text-decoration: line-through; }
-      /* line 279, C:/work/www/booking-search/sass/property-search-style.sass */
+        /* line 279, C:/work/www/booking-search/sass/property-search-style.sass */
+        .checkout-calendar-picker .picker-year ul li.month ul li.single-date.disabled:hover {
+          background-color: red !important; }
+      /* line 281, C:/work/www/booking-search/sass/property-search-style.sass */
       .checkout-calendar-picker .picker-year ul li.month ul li.single-date.day-of-week-Su, .checkout-calendar-picker .picker-year ul li.month ul li.single-date.day-of-week-Sa {
         color: #1F3580; }
-      /* line 281, C:/work/www/booking-search/sass/property-search-style.sass */
+      /* line 283, C:/work/www/booking-search/sass/property-search-style.sass */
       .checkout-calendar-picker .picker-year ul li.month ul li.single-date:hover {
         background-color: #e09200;
         color: white !important;

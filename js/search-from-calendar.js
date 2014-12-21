@@ -254,6 +254,7 @@ function getCalendar(startMonth, startYear, endMonth, endYear) {
   var currentDate;
   var dateType;
   var inputAdditions = '';
+  var inputDisabled = false;
 
   for (var year = startYear; year <= endYear; year++) {
 
@@ -270,9 +271,11 @@ function getCalendar(startMonth, startYear, endMonth, endYear) {
         if (today >= currentDate) {
           dateType = 'disabled';
           inputAdditions = 'disabled';
+          inputDisabled = true;
         } else {
           dateType = 'simple-date';
           inputAdditions = '';
+          inputDisabled = false;
         }
 
 
@@ -286,7 +289,8 @@ function getCalendar(startMonth, startYear, endMonth, endYear) {
                             'dateType': dateType, // simple-date, chosen-one, range,
                                                   // disabled
                             dateId: dateId,
-                            inputAdditions: inputAdditions
+                            inputAdditions: inputAdditions,
+                            disabled: inputDisabled
                             });
       }
       calendarMonths.push({

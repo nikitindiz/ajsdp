@@ -50,7 +50,8 @@
                       ng-model="date.dateChosen"
                       ng-click="keepOnlyTwoDates(date, 'before')"
                       ng-change="updateDatesDecoration(date)"
-                      {{date.inputAdditions}} class="date">
+                      {{date.inputAdditions}} class="date"
+                      ng-disabled="date.disabled">
                     {{date.dateDay}}
                   </label>
                 </li>
@@ -91,7 +92,8 @@
                       ng-model="date.dateChosen"
                       ng-click="keepOnlyTwoDates(date, 'after')"
                       ng-change="updateDatesDecoration(date)"
-                      {{date.inputAdditions}} class="date">
+                      {{date.inputAdditions}} class="date"
+                      ng-disabled="date.disabled">
                     {{date.dateDay}}
                   </label>
                 </li>
