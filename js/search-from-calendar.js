@@ -46,10 +46,10 @@ function datePickerController($scope) {
 
   // ToDo : Generate calendar range: start date - end date
 
-  var startYear   = 2014;
-  var startMonth  = 12;
-  var endYear     = 2015;
-  var endMonth    = 11;
+  var startYear   = new Date().getFullYear();
+  var startMonth  = new Date().getMonth()+1;
+  var endYear     = new Date().getFullYear()+1;
+  var endMonth    = new Date().getMonth();
   var daysInMonth = 0;
 
   $scope.pickerDates = getCalendar(startMonth, startYear, endMonth, endYear);
@@ -116,25 +116,30 @@ function datePickerController($scope) {
 
     $scope.chosenStatus = 'chosen';
 
-    //if (countChosenDates($scope.pickerDates) == 2) {
-
-      for (var y = 0; y < $scope.pickerDates.length; y++) {
-        for (var m = 0; m < $scope.pickerDates[y].months.length; m++) {
-          for (var d = 0; d < $scope.pickerDates[y].months[m].dates.length; d++) {
-            if ($scope.pickerDates[y].months[m].dates[d].dateChosen) {
-              $scope.pickerDates[y].months[m].dates[d].dateType = 'chosen-one';
-            } else if ( ($scope.pickerDates[y].months[m].dates[d].dateId < getPrevMax($scope.pickerDates)) &&
-                        ($scope.pickerDates[y].months[m].dates[d].dateId > getPrevMin($scope.pickerDates))
-                      ) {
-              $scope.pickerDates[y].months[m].dates[d].dateType = 'range';
-            } else if ($scope.pickerDates[y].months[m].dates[d].dateType != 'disabled') {
-              $scope.pickerDates[y].months[m].dates[d].dateType = 'simple-date';
-            }
+    for (var y = 0; y < $scope.pickerDates.length; y++) {
+      for (var m = 0; m < $scope.pickerDates[y].months.length; m++) {
+        for (var d = 0; d < $scope.pickerDates[y].months[m].dates.length; d++) {
+          if ($scope.pickerDates[y].months[m].dates[d].dateChosen) {
+            $scope.pickerDates[y].months[m].dates[d].dateType = 'chosen-one';
+          } else if ( ($scope.pickerDates[y].months[m].dates[d].dateId < getPrevMax($scope.pickerDates)) &&
+                      ($scope.pickerDates[y].months[m].dates[d].dateId > getPrevMin($scope.pickerDates))
+                    ) {
+            $scope.pickerDates[y].months[m].dates[d].dateType = 'range';
+          } else if ($scope.pickerDates[y].months[m].dates[d].dateType != 'disabled') {
+            $scope.pickerDates[y].months[m].dates[d].dateType = 'simple-date';
           }
         }
       }
-    //}
+    }
 
+  var BoxToHide;
+  BoxToHide = document.getElementsByClassName('checkout-calendar-picker check-out');
+  BoxToHide[0].className = BoxToHide[0].className + ' hide';
+//  console.log(BoxToHide[0].className);
+  BoxToHide = document.getElementsByClassName('checkout-calendar-picker check-in');
+  BoxToHide[0].className = BoxToHide[0].className + ' hide';
+//  BoxToHide[0].className = BoxToHide.classList.add('hide');
+//  console.log(BoxToHide[0].className);
 
   };
 
@@ -593,14 +598,14 @@ jQuery( document ).ready(function( $ ) {
         $('.col-wrapper').css('left') == 'auto') {
         $('.col-wrapper').animate({left : '-='+(258.5*2)});
       }
-      console.log(Math.abs(parseInt($('.col-wrapper').css('left'),10) - 5 - (258.5*2)));
-      console.log((258.5*2)*6);
+//      console.log(Math.abs(parseInt($('.col-wrapper').css('left'),10) - 5 - (258.5*2)));
+//      console.log((258.5*2)*6);
     });
     $(document).on('click','span.calendar-control.move-left', function() {
       if( !($('.col-wrapper').css('left') == '0px') && !($('.col-wrapper').css('left') == 'auto') ) {
         $('.col-wrapper').animate({left : '+='+(258.5*2)});
       }
-      console.log($('.col-wrapper').css('left'));
+//      console.log($('.col-wrapper').css('left'));
     });
     $(document).on('click','.checkout-calendar-picker.check-in span.calendar-control.close', function() {
       $('.checkout-calendar-picker.check-in').toggleClass('hide');
@@ -611,12 +616,12 @@ jQuery( document ).ready(function( $ ) {
     $(document).on('click','span.date-picker.check-in-picker-show', function() {
       $('.checkout-calendar-picker.check-out').addClass('hide');
       $('.checkout-calendar-picker.check-in').toggleClass('hide');
-      console.log('close');
+//      console.log('close');
     });
   $(document).on('click','span.date-picker.check-out-picker-show', function() {
       $('.checkout-calendar-picker.check-in').addClass('hide');
       $('.checkout-calendar-picker.check-out').toggleClass('hide');
-      console.log('close');
+//      console.log('close');
     });
 
 
