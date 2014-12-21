@@ -56,6 +56,10 @@ function datePickerController($scope) {
   $scope.weekDays = weekDayName;
   $scope.calendarWrapperWidth = colWidth * getMonthsLength($scope.pickerDates);
 
+  $scope.checkInDate = '';
+  $scope.checkOutDate = '';
+  $scope.chosenStatus = '';
+
   $scope.keepOnlyTwoDates = function(date, whereChange) {
 
     if (whereChange == undefined) {
@@ -83,6 +87,34 @@ function datePickerController($scope) {
   };
 
   $scope.updateDatesDecoration = function(date) {
+
+    $scope.checkInDate =  getPropertyById($scope.pickerDates,
+                                          getPrevMin($scope.pickerDates),
+                                          'dateDayOfWeek') + ', ' +
+                          MonthName[getPropertyById($scope.pickerDates,
+                                          getPrevMin($scope.pickerDates),
+                                          'dateMonth')-1] + ' '+
+                          getPropertyById($scope.pickerDates,
+                                          getPrevMin($scope.pickerDates),
+                                          'dateDay') + ', ' +
+                          getPropertyById($scope.pickerDates,
+                                          getPrevMin($scope.pickerDates),
+                                          'dateYear');
+
+    $scope.checkOutDate = getPropertyById($scope.pickerDates,
+                                          getPrevMax($scope.pickerDates),
+                                          'dateDayOfWeek') + ', ' +
+                          MonthName[getPropertyById($scope.pickerDates,
+                                          getPrevMax($scope.pickerDates),
+                                          'dateMonth')-1] + ' '+
+                          getPropertyById($scope.pickerDates,
+                                          getPrevMax($scope.pickerDates),
+                                          'dateDay') + ', ' +
+                          getPropertyById($scope.pickerDates,
+                                          getPrevMax($scope.pickerDates),
+                                          'dateYear');
+
+    $scope.chosenStatus = 'chosen';
 
     //if (countChosenDates($scope.pickerDates) == 2) {
 
@@ -143,7 +175,7 @@ function setPropertyById(date, id, provertyName, propertyValue) {
   if (id == -1) {
     return false;
   }
-  status = false;
+  var status = false;
   for (var y = 0; y < date.length; y++) {
     for (var m = 0; m < date[y].months.length; m++) {
       for (var d = 0; d < date[y].months[m].dates.length; d++) {
@@ -155,6 +187,23 @@ function setPropertyById(date, id, provertyName, propertyValue) {
     }
   }
   return status;
+}
+
+function getPropertyById(date, id, provertyName) {
+  if (id == -1) {
+    return false;
+  }
+  var property = '';
+  for (var y = 0; y < date.length; y++) {
+    for (var m = 0; m < date[y].months.length; m++) {
+      for (var d = 0; d < date[y].months[m].dates.length; d++) {
+        if (date[y].months[m].dates[d].dateId == id) {
+          property = date[y].months[m].dates[d][provertyName];
+        }
+      }
+    }
+  }
+  return property;
 }
 
 
@@ -536,39 +585,31 @@ function countDaysInMonth(month,year) {
 $.noConflict();
 jQuery( document ).ready(function( $ ) {
     $(document).on('click','span.calendar-control.move-right', function() {
-      $('.col-wrapper').animate({left : '-='+colWidth});
+      $('.col-wrapper').animate({left : '-='+(258.5*2)});
       console.log('right');
     });
     $(document).on('click','span.calendar-control.move-left', function() {
-      $('.col-wrapper').animate({left : '+='+colWidth});
+      $('.col-wrapper').animate({left : '+='+(258.5*2)});
       console.log('left');
     });
     $(document).on('click','.checkout-calendar-picker.check-in span.calendar-control.close', function() {
       $('.checkout-calendar-picker.check-in').toggleClass('hide');
-      console.log('close');
     });
     $(document).on('click','.checkout-calendar-picker.check-out span.calendar-control.close', function() {
       $('.checkout-calendar-picker.check-out').toggleClass('hide');
-      console.log('close');
     });
     $(document).on('click','span.date-picker.check-in-picker-show', function() {
+      $('.checkout-calendar-picker').addClass('hide');
       $('.checkout-calendar-picker.check-in').toggleClass('hide');
       console.log('close');
     });
   $(document).on('click','span.date-picker.check-out-picker-show', function() {
+      $('.checkout-calendar-picker').addClass('hide');
       $('.checkout-calendar-picker.check-out').toggleClass('hide');
       console.log('close');
     });
 
-  $(document).click(function(event) {
-      if(!$(event.target).closest('.checkout-calendar-picker').length) {
-          if($('.checkout-calendar-picker').is(":visible")) {
-            if (!$('.checkout-calendar-picker').hasClass('hide')){
-              $('.checkout-calendar-picker').addClass('hide');
-            }
-          }
-      }
-  });
+
 
 
 });
