@@ -62,25 +62,82 @@
       </span>
     </div>
   </div>
-  <div class="calendar-picker" ng-app>
-    <div ng-controller="datesController">
-      {{currentDate}}
-      <ul>
-        <li ng-repeat="listdate in dates">
-          <label class="{{listdate.dateType}}">
-          <input type="checkbox" name="" id="" ng-model="listdate.chosen" ng-click="updateDatesRange(listdate)" ng-change="updateDecoration(listdate)">
-          {{listdate.currentDateDay}}.
-          {{listdate.currentDateMonth}}.
-          {{listdate.currentDateYear}}
-           it's
-          {{listdate.currentDateDayOfWeek}}
-          and it's {{listdate.chosen}}
-          // {{listdate.dateId}}
-          </label>
-        </li>
-      </ul>
+
+  <div class="checkout-calendar-picker" ng-app>
+    <div ng-controller="datePickerController">
+        <div class="header-title">
+          <h1>Check-in Date</h1>
+        </div>
+        <div class="picker-year" ng-repeat="date in pickerDates">
+          <ul style="width: {{calendarWrapperWidth}}px">
+            <li ng-repeat="month in date.months" class="month">
+              <div class="header">
+                <h1>{{month.name}} {{date.year}}</h1>
+              </div>
+              <ul>
+                <li class="week-days">
+                  <ul>
+                    <li ng-repeat="weekDay in weekDays">
+                      {{weekDay}}
+                    </li>
+                  </ul>
+                </li>
+                <li class="days-shift-{{month.daysShift}}"></li>
+                <li ng-repeat="date in month.dates" class="single-date {{date.dateType}} day-of-week-{{date.dateDayOfWeek}}">
+                  <label>
+                    <input type="checkbox"
+                      ng-model="date.dateChosen"
+                      ng-click="keepOnlyTwoDates(date, 'after')"
+                      ng-change="updateDatesDecoration(date)"
+                      {{date.inputAdditions}} class="date">
+                    {{date.dateDay}}
+                  </label>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+  <div class="calendar-picker">
+    <div ng-controller="datesController">
+      {{currentDate}}
+
+        <ul>
+          <li ng-repeat="listdate in dates">
+            <label class="{{listdate.dateType}}">
+            <input type="checkbox" name="" id="" ng-model="listdate.chosen" ng-click="updateDatesRange(listdate)" ng-change="updateDecoration(listdate)">
+            {{listdate.currentDateDay}}.
+            {{listdate.currentDateMonth}}.
+            {{listdate.currentDateYear}}
+             it's
+            {{listdate.currentDateDayOfWeek}}
+            and it's {{listdate.chosen}}
+            // {{listdate.dateId}}
+            </label>
+          </li>
+        </ul>
+    </div>
+  </div>
+-->
 
   <!-- Additional scripts -->
   <script src="js/init.js"></script>
