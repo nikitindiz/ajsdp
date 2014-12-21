@@ -49,7 +49,7 @@ function datePickerController($scope) {
   var startYear   = 2014;
   var startMonth  = 12;
   var endYear     = 2015;
-  var endMonth    = 12;
+  var endMonth    = 11;
   var daysInMonth = 0;
 
   $scope.pickerDates = getCalendar(startMonth, startYear, endMonth, endYear);
@@ -589,12 +589,18 @@ function countDaysInMonth(month,year) {
 $.noConflict();
 jQuery( document ).ready(function( $ ) {
     $(document).on('click','span.calendar-control.move-right', function() {
-      $('.col-wrapper').animate({left : '-='+(258.5*2)});
-      console.log('right');
+      if( ( Math.abs(parseInt($('.col-wrapper').css('left'),10) - (258.5*2)) < (258.5*2)*6 ) ||
+        $('.col-wrapper').css('left') == 'auto') {
+        $('.col-wrapper').animate({left : '-='+(258.5*2)});
+      }
+      console.log(Math.abs(parseInt($('.col-wrapper').css('left'),10) - 5 - (258.5*2)));
+      console.log((258.5*2)*6);
     });
     $(document).on('click','span.calendar-control.move-left', function() {
-      $('.col-wrapper').animate({left : '+='+(258.5*2)});
-      console.log('left');
+      if( !($('.col-wrapper').css('left') == '0px') && !($('.col-wrapper').css('left') == 'auto') ) {
+        $('.col-wrapper').animate({left : '+='+(258.5*2)});
+      }
+      console.log($('.col-wrapper').css('left'));
     });
     $(document).on('click','.checkout-calendar-picker.check-in span.calendar-control.close', function() {
       $('.checkout-calendar-picker.check-in').toggleClass('hide');
