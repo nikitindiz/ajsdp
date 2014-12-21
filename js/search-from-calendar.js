@@ -603,12 +603,12 @@ jQuery( document ).ready(function( $ ) {
       $('.checkout-calendar-picker.check-out').toggleClass('hide');
     });
     $(document).on('click','span.date-picker.check-in-picker-show', function() {
-      $('.checkout-calendar-picker').addClass('hide');
+      $('.checkout-calendar-picker.check-out').addClass('hide');
       $('.checkout-calendar-picker.check-in').toggleClass('hide');
       console.log('close');
     });
   $(document).on('click','span.date-picker.check-out-picker-show', function() {
-      $('.checkout-calendar-picker').addClass('hide');
+      $('.checkout-calendar-picker.check-in').addClass('hide');
       $('.checkout-calendar-picker.check-out').toggleClass('hide');
       console.log('close');
     });
