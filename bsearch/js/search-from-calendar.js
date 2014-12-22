@@ -1,8 +1,3 @@
-
-
-
-
-
 // Settings
 
 var weekDayName = [
